@@ -40,3 +40,4 @@ for (j in 0:4) {
 }
 
 
+# Step 2: Get the first digit
