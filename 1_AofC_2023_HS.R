@@ -15,9 +15,7 @@
 # step 2: Get the first digit
 # Step 3: Get the last digit
 # Step 4: Combine the two into one number
-# Step 5: Create a loop to do this for each line and output the two-digit
-# value somewhere
-# Step 6: Sum up all two-digit values
+# Step 5: Sum up all two-digit values
 
 setwd("C:/Users/hszyd/Documents/GitHub/Advent-of-Code-2023")
 
@@ -31,11 +29,12 @@ setwd("C:/Users/hszyd/Documents/GitHub/Advent-of-Code-2023")
 #a1b2c3d4e5f -12345
 #treb7uchet - 7
 
-df <- read.csv("SampleData.csv")
+# Actual lines of code
+df <- read.csv("AoC_1_Data.txt", header = FALSE, col.names = c("Lines"))
 
 # loop to get the numbers only in a separate column
-j <- j+1
-for (j in 0:4) {
+
+for (j in 1:nrow(df)) {
   df$Digits[j] <- gsub("\\D", "", df[j,1])
 }
 
@@ -51,32 +50,26 @@ for (j in 0:4) {
 
 
 # code works when not it a for loop - issue within the loop
-i <- i+1
-for (i in 0:4) {
+
+for (i in 1:nrow(df)) {
   df$Number[i] <-
     if (nchar(df[i,2]) > 2){
-      print("big")
+      as.numeric(paste((substr(df[i,2], 1, 1)), (substr(df[i,2], nchar(df[i,2]), nchar(df[i,2]))), sep = ""))
       
     } else if (nchar(df[i,2]) < 2){
-      print("small")
+      as.numeric(df[i,2])*11
       
     } else {
-      print("equal to")
+      as.numeric(df[i,2])
     }
 }
 
 
+# Step 5: Sum up all two-digit values
+
+answer <- sum(as.numeric(df$Number))
 
 
-# this works for a single cell, but breaks in a for loop
-i <- 1
-df$Number[i] <-
-  if (nchar(df[i,2]) > 2){
-    print("big")
-      
-  } else if (nchar(df[i,2]) < 2){
-    print("small")
-      
-  } else {
-    print("equal to")
-  }
+
+
+  
