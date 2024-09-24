@@ -58,17 +58,27 @@ df_Red <- as.data.frame(DataString_Red)
 df_Red <- separate(df_Red, col = DataString_Red, into = c('Games', '1', '2', '3', '4', '5',
                                               '6', '7', '8', '9'), sep = ",")
 
+
+
 for (j in 1:nrow(df_Red)) {
   
 }
 
 
 
+
+
 # Blue string
+DataString_Blue <- gsub(" green", "", DataString)
+DataString_Blue <- gsub(" red", "", DataString_Blue)
 DataString_Blue
 
 # Green string
+DataString_Green <- gsub(" red", "", DataString)
+DataString_Green <- gsub(" blue", "", DataString_Green)
 DataString_Green
+
+
 
 
 
